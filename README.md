@@ -13,31 +13,31 @@ from tkinter import messagebox
 def setURL():
     url = getURL.get()
     print(url)
-
-    #Object is created to hold and print URL
-    global yt
-    yt = YouTube(url)
-    print(yt.title)
-
-    #Get the stream qualities of the videos 
-    global videos
-    videos = yt.streams.filter(mime_type='video/mp4')
-
-    #Description is visible in listboxDes
-    title = yt.title
-    views = yt.views
-    length = yt.length
-    rating = yt.rating
-    listboxDes.insert(END,"Title: " +str(title))
-    listboxDes.insert(END,"Number of views: " +str(views))
-    listboxDes.insert(END,"Length of video: " +str(length))
-    listboxDes.insert(END,"Rating of video: " +str(rating))
     
-    #Get stream quality and display as list(one after the other) in the Listbox
-    count = 1
-    for v in videos:
-        listboxQuality.insert(END, str(count)+". "+str(v)+"\n\n")
-        count += 1
+#Object is created to hold and print URL
+global yt
+yt = YouTube(url)
+print(yt.title)
+
+#Get the stream qualities of the videos 
+global videos
+videos = yt.streams.filter(mime_type='video/mp4')
+
+#Description is visible in listboxDes
+title = yt.title
+views = yt.views
+length = yt.length
+rating = yt.rating
+listboxDes.insert(END,"Title: " +str(title))
+listboxDes.insert(END,"Number of views: " +str(views))
+listboxDes.insert(END,"Length of video: " +str(length))
+listboxDes.insert(END,"Rating of video: " +str(rating))
+    
+#Get stream quality and display as list(one after the other) in the Listbox
+count = 1
+for v in videos:
+    listboxQuality.insert(END, str(count)+". "+str(v)+"\n\n")
+    count += 1
 
 #get downloaded file and browse for a location and set the location 
 def clickBrowse():
@@ -54,11 +54,11 @@ def clickDownload():
         return
     
 
-    select = listboxQuality.curselection()
-    quality = videos[select[0]]
-    location = getLoc.get()
-    quality.download(location)
-    messagebox.showinfo("The downloading has finished", yt.title+" has been downloaded successfully!")
+select = listboxQuality.curselection()
+quality = videos[select[0]]
+location = getLoc.get()
+quality.download(location)
+messagebox.showinfo("The downloading has finished", yt.title+" has been downloaded successfully!")
 
 #clear the fields for another url
 def clickReset():
