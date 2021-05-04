@@ -1,8 +1,5 @@
 # Project-1
-#Aditi Thewarkar
-#Professor Domanski
-#3 March 2021
-#Python Project 1
+
 
 from pytube import YouTube
 from tkinter import *
